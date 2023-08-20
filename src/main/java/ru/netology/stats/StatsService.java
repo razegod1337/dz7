@@ -1,8 +1,5 @@
 package ru.netology.stats;
 
-import java.util.Arrays;
-
-
 public class StatsService {
     public int minSales(int[] sales) {
         int minMonth = 0; // номер месяца с минимальными продажами среди просмотренных ранее
@@ -28,49 +25,43 @@ public class StatsService {
 
     public int sumSales(int[] sales) {
         int sum = 0;
-        for (int i = 0; i < sales.length; i++) {
-            sum = Arrays.stream(sales).sum();
+        for (long sale : sales) {
+            sum += sale;
         }
         return sum;
     }
 
     public int averageMonth(int[] sales) {
-        int medium = 0;
-        int sum = 0;
-        for (int i = 0; i < sales.length; i++) {
-            sum = Arrays.stream(sales).sum();
-            medium = sum / sales.length;
-        }
-        return medium;
+        int avergSum = 0;
+        int sumMonth = 0;
+
+        sumMonth = sumSales(sales);
+        avergSum = sumMonth / sales.length;
+
+        return avergSum;
     }
 
     public int minAverageMonth(int[] sales) {
-        int mediumt = 0;
-        int minSall = 0;
-        int sumt = 0;
-        for (int i = 0; i < sales.length; i++) {
-            sumt = Arrays.stream(sales).sum();
-            mediumt = sumt / sales.length;
-            if (sales[i] < mediumt) {
-                minSall = minSall + 1;
+        int lessAvergMonth = 0;
+        double avergSum = averageMonth(sales);
+
+        for (long sale : sales) {
+            if (sale <= avergSum) {
+                lessAvergMonth++;
             }
         }
-
-        return minSall;
+        return lessAvergMonth;
     }
 
     public int maxAverageMonth(int[] sales) {
-        int mediuma = 0;
-        int maxSalls = 0;
-        int suma = 0;
-        for (int i = 0; i < sales.length; i++) {
-            suma = Arrays.stream(sales).sum();
-            mediuma = suma / sales.length;
-            if (sales[i] > mediuma) {
-                maxSalls = maxSalls + 1;
+        int aboveAvergMonth = 0;
+        double avergSum = averageMonth(sales);
+
+        for (long sale : sales) {
+            if (sale >= avergSum) {
+                aboveAvergMonth++;
             }
         }
-
-        return maxSalls;
+        return aboveAvergMonth;
     }
 }

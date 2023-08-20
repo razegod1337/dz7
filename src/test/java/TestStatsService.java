@@ -43,7 +43,7 @@ public class TestStatsService {
     public void minAverageMonthTest() {
         StatsService service = new StatsService();
         int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 5;
+        int expected = 7;
         int actual = service.minAverageMonth(sales);
         Assertions.assertEquals(expected, actual);
     }
@@ -52,7 +52,7 @@ public class TestStatsService {
     public void maxAverageMonthTest() {
         StatsService service = new StatsService();
         int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 5;
+        int expected = 7;
         int actual = service.maxAverageMonth(sales);
         Assertions.assertEquals(expected, actual);
     }
